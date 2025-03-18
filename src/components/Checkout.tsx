@@ -26,7 +26,7 @@ const Checkout: FC<CheckoutProps> = props => {
         props.cart.items.forEach(cartItem => {
             const existingItem = summarisedItems.find(
                 item => item.itemId === cartItem.itemId &&
-                    JSON.stringify(item.option) === JSON.stringify(cartItem.option)
+                    item.itemVersionPrefixId === cartItem.itemVersionPrefixId
             );
 
             if (existingItem) {

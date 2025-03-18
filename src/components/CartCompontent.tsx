@@ -22,7 +22,7 @@ const CartCompontent: FC<CartProps> = props => {
         props.cartItems.forEach(cartItem => {
             const existingItem = summarisedItems.find(
                 item => item.itemId === cartItem.itemId &&
-                    JSON.stringify(item.option) === JSON.stringify(cartItem.option)
+                    item.itemVersionPrefixId === cartItem.itemVersionPrefixId
             );
 
             if (existingItem) {
