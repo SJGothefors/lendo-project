@@ -96,6 +96,7 @@ const StartPage: FC = () => {
                             <Grid2 size={4}>
                                 <CartCompontent
                                     cartItems={cartItems}
+                                    items={itemsList}
                                     onAddToCart={(cartItem: CartItem) => onAddToCart(cartItem)}
                                     onRemoveFromCart={(itemVersionPrefixId: string) => {
                                         setCartItems((prevCartItems) => {
@@ -121,6 +122,7 @@ const StartPage: FC = () => {
                     :
                     <Checkout
                         cart={cart!!}
+                        items={itemsList}
                         onAddToCart={(cartItem: CartItem) => {
                             onAddToCart(cartItem)
                             setRefreshCart(Date.now())

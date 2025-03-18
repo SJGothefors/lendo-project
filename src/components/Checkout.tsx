@@ -1,6 +1,6 @@
 import React, {FC, useContext, useEffect, useState} from "react";
 import {Button, Grid2, Typography} from "@mui/material";
-import {Cart, CartItem, DeliveryDetails, Order} from "../api-client/data-classes";
+import {Cart, CartItem, DeliveryDetails, Item, Order} from "../api-client/data-classes";
 import CartItemCompontent from "./CartItemComponent";
 import CheckoutDetailsComponent from "./CheckoutDetailsComponent";
 import {calculateTotalCostInCart} from "../api-client/calculation-utils";
@@ -8,6 +8,7 @@ import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 export interface CheckoutProps {
     cart: Cart,
+    items: Item[] | undefined,
     onAddToCart: (cartItem: CartItem) => void
     onRemoveFromCart: (itemVersionPrefixId:string) => void
     closeView: () => void
@@ -59,10 +60,11 @@ const Checkout: FC<CheckoutProps> = props => {
             </Grid2>
 
             <Grid2 container direction={"column"} size={4}>
-                {checkOutItems?.map((item) => {
+                {checkOutItems?.map((item   ) => {
                     return (
                         <CartItemCompontent
                             cartItem={item}
+                            itemStorage={props.items?.find(i => i.id === item.itemId)?.options.find(option => option.itemVersionPrefixId === item.itemVersionPrefixId)?.quantity!!}
                             onAddOne={() => {props.onAddToCart({...item, cartQuantity: 1})}}
                             onRemoveOne={() => {props.onRemoveFromCart(item.itemVersionPrefixId)}}
                         />

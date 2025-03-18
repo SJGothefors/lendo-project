@@ -1,12 +1,13 @@
 
 import React, { FC, useContext, useEffect, useState } from "react";
 import {Button, Grid2, Typography} from "@mui/material";
-import {Cart, CartItem, Option} from "../api-client/data-classes";
+import {Cart, CartItem, Item, Option} from "../api-client/data-classes";
 import CartItemCompontent from "./CartItemComponent";
 import {calculateTotalCostInCart} from "../api-client/calculation-utils";
 
 export interface CartProps {
     cartItems: CartItem[],
+    items: Item[] | undefined,
     onAddToCart: (cartItem: CartItem) => void
     onRemoveFromCart: (itemVersionPrefixId:string) => void
     onCheckout: (cart: Cart) => void
@@ -32,6 +33,8 @@ const CartCompontent: FC<CartProps> = props => {
             }
         });
 
+        console.log(summarisedItems)
+
         setDisplayedCartItems(summarisedItems);
     }, [props.cartItems]);
 
@@ -44,6 +47,7 @@ const CartCompontent: FC<CartProps> = props => {
                     return (
                         <CartItemCompontent
                             cartItem={cartItem}
+                            itemStorage={props.items?.find(item => item.id === cartItem.itemId)?.options.find(option => option.itemVersionPrefixId === cartItem.itemVersionPrefixId)?.quantity!!}
                             key={key}
                             onAddOne={() => props.onAddToCart(
                                 {...cartItem, cartQuantity: 1}

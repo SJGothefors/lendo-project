@@ -4,6 +4,7 @@ import {CartItem} from "../api-client/data-classes";
 
 export interface CartItemProps {
     cartItem: CartItem,
+    itemStorage: number,
     onAddOne: () => void,
     onRemoveOne: () => void
 }
@@ -59,8 +60,9 @@ const CartItemCompontent: FC<CartItemProps> = props => {
             <Grid2 container direction={"row"} spacing={2}>
                 <Button
                     onClick={() => props.onAddOne()}
+                    disabled={props.itemStorage <= 0}
                     size="small"
-                >Add one
+                >{props.itemStorage <= 0 ? "That was the last one" : "Add one"}
                 </Button>
                 <Button
                     size="small"
