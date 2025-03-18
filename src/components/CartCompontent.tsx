@@ -35,8 +35,6 @@ const CartCompontent: FC<CartProps> = props => {
         setDisplayedCartItems(summarisedItems);
     }, [props.cartItems]);
 
-
-
     return (
        <Grid2 sx={{border: "1px solid grey", padding: "2px"}}>
             <Typography>Cart</Typography>

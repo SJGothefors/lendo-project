@@ -26,6 +26,10 @@ const ItemCard: FC<ItemCardProps> = props => {
 
     const [addedToCart, setAddedToCart] = useState(false);
 
+    useEffect(() => {
+        setSelectedOption(initialOption);
+    }, [props.item]);
+
     const handleOnAddToCart = () => {
         setAddedToCart(true);
         props.onAddToCart({
@@ -47,6 +51,8 @@ const ItemCard: FC<ItemCardProps> = props => {
         }, 2000);
 
     }
+
+
 
     return (
         <Grid2>
@@ -141,7 +147,8 @@ const ItemCard: FC<ItemCardProps> = props => {
                                                     </Typography>
                                                 </Grid2>
                                                 <Grid2 alignContent={"center"}>
-                                                    <Radio size="small" checked={selectedOption === option}
+                                                    <Radio size="small"
+                                                           checked={selectedOption.itemVersionPrefixId === option.itemVersionPrefixId}
                                                            disabled={option.quantity === 0}
                                                            onChange={() => setSelectedOption(option)}/>
                                                 </Grid2>
