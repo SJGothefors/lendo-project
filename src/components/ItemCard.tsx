@@ -22,13 +22,9 @@ const ItemCard: FC<ItemCardProps> = props => {
 
     const initialOption = props.item.options.find(option => option.quantity > 0)!!;
 
-    const [selectedOption, setSelectedOption] = useState<Option>(initialOption);
+    const [selectedOption, setSelectedOption] = useState<Option | undefined>(initialOption);
 
     const [addedToCart, setAddedToCart] = useState(false);
-
-    useEffect(() => {
-        setSelectedOption(initialOption);
-    }, [props.item]);
 
     const handleOnAddToCart = () => {
         setAddedToCart(true);
@@ -51,8 +47,6 @@ const ItemCard: FC<ItemCardProps> = props => {
         }, 2000);
 
     }
-
-
 
     return (
         <Grid2>
@@ -148,7 +142,7 @@ const ItemCard: FC<ItemCardProps> = props => {
                                                 </Grid2>
                                                 <Grid2 alignContent={"center"}>
                                                     <Radio size="small"
-                                                           checked={selectedOption.itemVersionPrefixId === option.itemVersionPrefixId}
+                                                           checked={selectedOption?.itemVersionPrefixId === option.itemVersionPrefixId}
                                                            disabled={option.quantity === 0}
                                                            onChange={() => setSelectedOption(option)}/>
                                                 </Grid2>
@@ -166,7 +160,9 @@ const ItemCard: FC<ItemCardProps> = props => {
                 <CardActions>
                     <Button
                         size="small"
-                        disabled={!props.item.available}
+                        disabled={!props.item.available || (
+                            props.item.options.find(option => option.itemVersionPrefixId === selectedOption?.itemVersionPrefixId)?.quantity === 0
+                        )}
                         onClick={() => handleOnAddToCart()}
                     > {addedToCart ? `Added :)` : "Add to cart"}</Button>
                 </CardActions>
