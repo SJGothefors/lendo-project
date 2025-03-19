@@ -69,6 +69,11 @@ const ItemCard: FC<ItemCardProps> = props => {
                                 null
                         }
                     </Grid2>
+                    <Grid2 container direction={"row"} spacing={0}>
+                        <Typography variant="caption" sx={{color: 'text.secondary'}}>
+                            Weight: {props.item.weight} kg
+                        </Typography>
+                    </Grid2>
                 </CardContent>
                 {
                     props.item.available ?
