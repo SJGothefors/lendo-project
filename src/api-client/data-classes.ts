@@ -39,6 +39,7 @@ export interface CartItem {
     name: string,
     cartQuantity: number,
     option: CartOption,
+    weight: number,
     price: number,
 }
 

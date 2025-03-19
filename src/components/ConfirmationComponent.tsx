@@ -2,6 +2,7 @@
 import React, { FC} from "react";
 import {Button, Grid2, Typography} from "@mui/material";
 import {Order} from "../api-client/data-classes";
+import {calculateTotalWeightInCart} from "../api-client/calculation-utils";
 
 export interface ConfirmationProps {
     order: Order,
@@ -86,6 +87,10 @@ const ConfirmationComponent: FC<ConfirmationProps> = props => {
                 <Typography variant={"overline"}>Address: {props.order.deliveryDetails.address}</Typography>
                 <Typography variant={"overline"}>Phone: {props.order.deliveryDetails.phone}</Typography>
                 <Typography variant={"overline"}>Email: {props.order.deliveryDetails.email}</Typography>
+            </Grid2>
+
+            <Grid2 container direction={"column"}>
+                <Typography variant={"overline"}>Your package will weigh aproxmitly {calculateTotalWeightInCart(props.order.cart.items).toPrecision(2)} kg</Typography>
             </Grid2>
 
             <Grid2>

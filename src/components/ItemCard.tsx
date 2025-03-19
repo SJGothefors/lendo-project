@@ -30,6 +30,7 @@ const ItemCard: FC<ItemCardProps> = props => {
             itemVersionPrefixId: `${props.item.id}-${props.item.name}-${selectedOption?.color}-${selectedOption?.power}-${selectedOption?.storage}`,
             name: props.item.name,
             cartQuantity: 1,
+            weight: props.item.weight,
             option: {
                 color: selectedOption?.color,
                 power: selectedOption?.power,
