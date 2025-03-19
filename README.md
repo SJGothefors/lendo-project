@@ -3,6 +3,7 @@ lendo project
 ## to run
 
 npm install
+
 npm start
 
 click and have fun
