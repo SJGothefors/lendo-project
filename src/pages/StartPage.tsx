@@ -68,6 +68,37 @@ const StartPage: FC = () => {
         );
     };
 
+    const onRemoveItemFromCart = (itemVersionPrefixId: string) => {
+        setCartItems((prevCartItems) => {
+            const indexToRemove = prevCartItems.findIndex(
+                (item) => item.itemVersionPrefixId === itemVersionPrefixId
+            );
+
+            if (indexToRemove === -1) return prevCartItems; // No matching item found
+
+            const itemToRemove = prevCartItems[indexToRemove];
+
+            // Increase quantity back in itemsList
+            setItemsList((prevItems) =>
+                prevItems?.map((item) => {
+                    if (item.id === itemToRemove.itemId) {
+                        const updatedOptions = item.options.map((option) =>
+                            option.itemVersionPrefixId === itemToRemove.itemVersionPrefixId
+                                ? { ...option, quantity: option.quantity + 0.5 }
+                                : option
+                        );
+
+                        return { ...item, options: updatedOptions, available: true };
+                    }
+                    return item;
+                })
+            );
+
+            return prevCartItems.filter((_, index) => index !== indexToRemove);
+        });
+        setRefreshCart(Date.now());
+    };
+
     const onConfirmOrder = (order: Order) => {
         const timer = setTimeout(() => {
             const aborter = new AbortController()
@@ -98,17 +129,7 @@ const StartPage: FC = () => {
                                     cartItems={cartItems}
                                     items={itemsList}
                                     onAddToCart={(cartItem: CartItem) => onAddToCart(cartItem)}
-                                    onRemoveFromCart={(itemVersionPrefixId: string) => {
-                                        setCartItems((prevCartItems) => {
-                                            const indexToRemove = prevCartItems.findIndex(
-                                                (item) => item.itemVersionPrefixId === itemVersionPrefixId
-                                            );
-
-                                            if (indexToRemove === -1) return prevCartItems; // No matching item found
-
-                                            return prevCartItems.filter((_, index) => index !== indexToRemove);
-                                        });
-                                    }}
+                                    onRemoveFromCart={onRemoveItemFromCart}
                                     onCheckout={(cart: Cart) => {
                                         setCartViewOpen(true);
                                         setCart(cart);
@@ -127,18 +148,7 @@ const StartPage: FC = () => {
                             onAddToCart(cartItem)
                             setRefreshCart(Date.now())
                         }}
-                        onRemoveFromCart={(itemVersionPrefixId: string) => {
-                            setCartItems((prevCartItems) => {
-                                const indexToRemove = prevCartItems.findIndex(
-                                    (item) => item.itemVersionPrefixId === itemVersionPrefixId
-                                );
-
-                                if (indexToRemove === -1) return prevCartItems; // No matching item found
-
-                                return prevCartItems.filter((_, index) => index !== indexToRemove);
-                            });
-                            setRefreshCart(Date.now())
-                        }}
+                        onRemoveFromCart={onRemoveItemFromCart}
                         closeView={() => {
                             setCartViewOpen(false);
                         }}
