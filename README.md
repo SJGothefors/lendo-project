@@ -9,7 +9,7 @@ npm start
 click and have fun
 
 ## improvements to make
-*if i had more time, I would*
+*if i had more time to invest, I would*
 
 - add tests (not that familiar with testing in frontend, so will have to learn).
 - use routing to navigate between pages instead of using states and then hide/show components.
