@@ -9,7 +9,6 @@ export const getItems = (signal: AbortSignal): Promise<Item[]> =>
  */
 
 // Mock calls
-//export const getItems = getItemsMockWithDelay
 
 export const getItems = async (signal: AbortSignal): Promise<Item[]> => {
     const apiItems = await getItemsMockWithDelay(signal);

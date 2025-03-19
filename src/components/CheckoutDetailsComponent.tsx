@@ -1,5 +1,5 @@
-import React, {FC, useContext, useEffect, useState} from "react";
-import {Button, Grid2, TextField, Typography} from "@mui/material";
+import React, {FC} from "react";
+import { Grid2, TextField, Typography} from "@mui/material";
 import {DeliveryDetails} from "../api-client/data-classes";
 
 export interface CheckoutDetailsComponentProps {

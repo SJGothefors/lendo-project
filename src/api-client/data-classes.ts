@@ -10,10 +10,10 @@ export interface Item {
 
 export interface Option {
     itemVersionPrefixId:string,
-    color?: string | string[]; // Can be a single color or an array of colors
-    power?: number[]; // For light bulbs with multiple power levels
-    storage?: string[]; // For electronics with storage options
-    quantity: number; // Available stock count
+    color?: string | string[];
+    power?: number[];
+    storage?: string[];
+    quantity: number;
 }
 
 export interface ApiItem {
@@ -27,10 +27,10 @@ export interface ApiItem {
 }
 
 export interface ApiOption {
-    color?: string | string[]; // Can be a single color or an array of colors
-    power?: number[]; // For light bulbs with multiple power levels
-    storage?: string[]; // For electronics with storage options
-    quantity: number; // Available stock count
+    color?: string | string[];
+    power?: number[];
+    storage?: string[];
+    quantity: number;
 }
 
 export interface CartItem {
@@ -43,10 +43,10 @@ export interface CartItem {
 }
 
 export interface CartOption {
-    color?: string | string[]; // Can be a single color or an array of colors
-    power?: number[]; // For light bulbs with multiple power levels
-    storage?: string[]; // For electronics with storage options
-    quantityLeft?: number; // Available stock count
+    color?: string | string[];
+    power?: number[];
+    storage?: string[];
+    quantityLeft?: number;
 }
 
 export interface Cart {

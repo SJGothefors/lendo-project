@@ -1,6 +1,6 @@
 import {ApiItem} from "./data-classes";
 
-// Mock data from json
+// Mock data from json - price changed from string to number, because why would you want to store a price as a string?
 export const items: ApiItem[] = [
     {
         id: "1",

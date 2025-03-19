@@ -19,3 +19,7 @@ export const postOrderMockWithDelay = (order: Order,signal: AbortSignal) => {
         }, 10)
     })
 }
+
+
+
+//Real mocks for the API calls should be made with for example fetch-mock library

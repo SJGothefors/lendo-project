@@ -1,13 +1,10 @@
-import React, {FC, useContext, useEffect, useState} from "react";
+import React, {FC, useState} from "react";
 import {
     Button,
     Card,
     CardActions,
     CardContent,
-    Checkbox,
     Grid2,
-    List,
-    ListItem,
     Radio,
     Typography
 } from "@mui/material";

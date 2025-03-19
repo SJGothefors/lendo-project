@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
-import {Grid2, Typography} from "@mui/material";
+import {Grid2} from "@mui/material";
 import {Cart, CartItem, Item, Order} from "../api-client/data-classes";
 import {getItems, postOrder} from "../api-client/client";
 import ItemsList from "../components/ItemsList";

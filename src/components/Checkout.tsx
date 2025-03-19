@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Button, Grid2, Typography} from "@mui/material";
 import {Cart, CartItem, DeliveryDetails, Item, Order} from "../api-client/data-classes";
 import CartItemCompontent from "./CartItemComponent";

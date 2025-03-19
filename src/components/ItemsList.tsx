@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect, useState} from "react";
+import React, {FC} from "react";
 import {Grid2, Typography} from "@mui/material";
 import {CartItem, Item} from "../api-client/data-classes";
 import ItemCard from "./ItemCard";
